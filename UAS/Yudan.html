@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Authentication System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    *{
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      background:#0b0b0d;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#e5e5e5;
+    }
+
+    .wrapper{
+      width:900px;
+      max-width:95%;
+      display:grid;
+      grid-template-columns:1fr 1.3fr;
+      background:#111114;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,0.6);
+      border:1px solid #2a2a2a;
+    }
+
+    .login{
+      padding:50px;
+      background:#0f0f12;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .login h2{
+      margin-bottom:25px;
+      letter-spacing:1px;
+    }
+
+    input{
+      width:100%;
+      padding:13px;
+      margin-bottom:15px;
+      border-radius:6px;
+      border:1px solid #333;
+      background:#1a1a1d;
+      color:#eee;
+    }
+
+    input::placeholder{
+      color:#aaa;
+    }
+
+    input:focus{
+      outline:none;
+      border-color:#6b1e2d;
+    }
+
+    button{
+      padding:13px;
+      border:none;
+      border-radius:6px;
+      background:#6b1e2d;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#822638;
+    }
+
+    .error{
+      margin-top:15px;
+      color:#ff6b6b;
+      font-size:14px;
+      display:none;
+    }
+
+    .info{
+      padding:60px;
+      background:#151518;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .info h1{
+      font-size:34px;
+      margin-bottom:20px;
+      letter-spacing:1px;
+    }
+
+    .info p{
+      line-height:1.7;
+      font-size:15px;
+      color:#cfcfcf;
+    }
+
+    @media(max-width:768px){
+      .wrapper{
+        grid-template-columns:1fr;
+      }
+      .info{
+        order:-1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="login">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Sign In</button>
+      <div class="error" id="errorMsg">Username atau password salah</div>
+    </div>
+
+    <div class="info">
+      <h1>Web Authentication System</h1>
+      <p>
+        Aplikasi ini merupakan implementasi sistem autentikasi pengguna
+        berbasis web yang dirancang secara sederhana dan formal.
+        <br><br>
+        Sistem menampilkan proses login dasar dengan validasi input
+        serta pemisahan antarmuka yang rapi dan terstruktur.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function login(){
+      const u=document.getElementById("username").value;
+      const p=document.getElementById("password").value;
+      const e=document.getElementById("errorMsg");
+
+      if(u==="admin" && p==="admin123"){
+        alert("Login berhasil");
+        e.style.display="none";
+      }else{
+        e.style.display="block";
+      }
+    }
+  </script>
+
+</body>
+</html>
