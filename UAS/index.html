@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>The Gunners | North London Forever</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      font-family: 'Oswald', sans-serif;
+      background: linear-gradient(135deg, #7a0c26, #111);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 950px;
+      height: 480px;
+      display: flex;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .left {
+      width: 55%;
+      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(122, 12, 38, 0.88);
+    }
+
+    .left-content {
+      position: relative;
+      z-index: 2;
+      padding: 70px;
+      color: white;
+      animation: slideLeft 1.2s ease;
+    }
+
+    .title {
+      font-size: 54px;
+      letter-spacing: 5px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      letter-spacing: 4px;
+      margin-top: 12px;
+      opacity: 0.9;
+    }
+
+    .divider {
+      width: 130px;
+      height: 4px;
+      background: gold;
+      margin: 28px 0;
+    }
+
+    .description {
+      font-size: 15px;
+      line-height: 1.9;
+      opacity: 0.85;
+    }
+
+    .right {
+      width: 45%;
+      background: #0f0f0f;
+      padding: 60px 50px;
+      color: white;
+      animation: slideRight 1.2s ease;
+    }
+
+    .right h2 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+    }
+
+    form input:focus {
+      outline: none;
+      box-shadow: 0 0 8px gold;
+    }
+
+    form button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: gold;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #ffd700;
+      transform: scale(1.05);
+    }
+
+    .info {
+      margin-top: 30px;
+      font-size: 13px;
+      text-align: center;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-70px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(70px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="left">
+      <div class="overlay"></div>
+      <div class="left-content">
+        <h1 class="title">THE GUNNERS</h1>
+        <h3 class="subtitle">NORTH LONDON FOREVER</h3>
+
+        <div class="divider"></div>
+
+        <p class="description">
+          Identity, loyalty, and passion.<br>
+          This web project is created as a representation
+          of consistency, pride, and dedication.
+        </p>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2>MEMBER ACCESS</h2>
+
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit">SIGN IN</button>
+      </form>
+
+      <p class="info">
+        UAS PBO Web Project<br>
+        Created by <strong>Yudan</strong>
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    class LoginSystem {
+      constructor(formId) {
+        this.form = document.getElementById(formId);
+        this.username = document.getElementById("username");
+        this.password = document.getElementById("password");
+        this.run();
+      }
+
+      run() {
+        this.form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          this.validateInput();
+        });
+      }
+
+      validateInput() {
+        if (this.username.value === "" || this.password.value === "") {
+          alert("Username dan Password wajib diisi!");
+        } else {
+          this.loginSuccess();
+        }
+      }
+
+      loginSuccess() {
+        alert("Welcome " + this.username.value + "!");
+        this.form.reset();
+      }
+    }
+
+    const appLogin = new LoginSystem("loginForm");
+  </script>
+
+</body>
+</html>
